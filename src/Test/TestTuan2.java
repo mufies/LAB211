@@ -1,60 +1,105 @@
 package Test;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import Tuan2.*;
 public class TestTuan2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         while (true) {
             System.out.println("Menu:");
-            System.out.println("1. Normal Calculator");
-            System.out.println("2. BMI Calculator");
-            System.out.println("3. Exit");
+            System.out.println("1. Bai 1");
+            System.out.println("2. Bai 2");
+            System.out.println("3. Bai 3");
+            System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
-
-            switch (choice) {
+            int choice = getInt();
+            switch (choice)
+            {
                 case 1:
-                    System.out.println("Option 1 selected");
-                    normalCalculator();
-                    break;
+                    boolean check=true;
+                    while (check) {
+                        System.out.println("Menu:");
+                        System.out.println("1. Normal Calculator");
+                        System.out.println("2. BMI Calculator");
+                        System.out.println("3. Exit");
+                        System.out.print("Enter your choice: ");
+                        int choice1 = scanner.nextInt();
+
+                        switch (choice1) {
+                            case 1:
+                                System.out.println("Option 1 selected");
+                                normalCalculator();
+                                break;
+                            case 2:
+                                System.out.println("Option 2 selected");
+                                BMICalculator();
+                                break;
+                            case 3:
+                                System.out.println("Exiting...");
+                                scanner.close();
+                                check=false;
+                                break;
+                            default:
+                                System.out.println("Invalid choice. Please try again.");
+                        }
+                    }
+                break;
                 case 2:
                     System.out.println("Option 2 selected");
-                    BMICalculator();
                     break;
-                case 3:
-                    System.out.println("Exiting...");
-                    scanner.close();
+                case 4:
                     System.exit(0);
-                    break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
+
         }
     }
     public static void normalCalculator() {
-        Scanner scanner = new Scanner(System.in);
-        Calculate c = new Calculate();
-        System.out.println("Normal Calculator");
-        double a = getDoubleInput();
-        double result = a;
-        while(true) {
-            Operator operator = new Operator(getOperator());
+            Scanner scanner = new Scanner(System.in);
+            Calculate c = new Calculate();
+            System.out.println("Normal Calculator");
+            double a = getDoubleInput();
+            double result = a;
+            while (true) {
+                Operator operator = new Operator(getOperator());
 
-            if(operator.getOperator() == '=') {
-                System.out.println("Result: " + result);
-                return;
+                if (operator.getOperator() == '=') {
+                    System.out.println("Result: " + result);
+                    return;
+                } else {
+                    double b = getDoubleInput();
+
+                    result = c.normalCalc(result, b, operator);
+                    System.out.println("Result: " + result);
+
+                }
+
             }
-            else
-            {
-                double b = getDoubleInput();
-
-                result = c.normalCalc(result, b, operator);
-                System.out.println("Result: " + result);
-
-            }
-
         }
+    public static int getInt()
+    {
+        Scanner sc = new Scanner(System.in);
+
+
+        int k;
+        while(true)
+        {
+            try
+            {
+                k = sc.nextInt();
+                sc.nextLine();
+                return k;
+            }catch(InputMismatchException e)
+            {
+                System.out.println("Wrong format");
+                sc.nextLine();
+
+            }
+        }
+
     }
     public static void BMICalculator() {
         Calculate c = new Calculate();
