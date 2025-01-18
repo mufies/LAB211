@@ -139,61 +139,77 @@ public class TestTuan2 {
 
 
     public static void matrixCalculator() {
-
-
-        boolean check=true;
-        while (check) {
-            System.out.println("Menu:");
-            System.out.println("1. Addition");
-            System.out.println("2. Subtraction");
-            System.out.println("3. Multiplication");
-            System.out.println("4. Exit");
-            System.out.print("Enter your choice: ");
-            int choice = getInt();
-            switch (choice) {
-                case 1:
-
-                    Matrix m = new Matrix(inputMatrix(1));
-                    Matrix m1 = new Matrix(inputMatrix(2));
-                    Matrix result = m.additionMatrix(m1);
-                    System.out.println("Result:");
-                    m.printMatrix();
-                    System.out.println("+");
-                    m1.printMatrix();
-                    System.out.println("=");
-                    result.printMatrix();
-                    break;
-                case 2:
-                     m = new Matrix(inputMatrix(1));
-                     m1 = new Matrix(inputMatrix(2));
-                     result = m.subtractionMatrix(m1);
-                    m.printMatrix();
-
-                    System.out.printf("-\n");
-                    m1.printMatrix();
-
-                    System.out.printf("=\n");
-
-                    result.printMatrix();
-                    break;
-                case 3:
-                    m = new Matrix(inputMatrix(1));
-                    m1 = new Matrix(inputMatrix(2));
-                    result = m.multiplicationMatrix(m1);
-                    m.printMatrix();
-                    System.out.printf("*\n");
-                    m1.printMatrix();
-                    System.out.printf("=\n");
-                    result.printMatrix();
-                    break;
-                case 4:
-                    check=false;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
+    boolean check = true;
+    while (check) {
+        System.out.println("Menu:");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Exit");
+        System.out.print("Enter your choice: ");
+        int choice = getInt();
+        switch (choice) {
+            case 1:
+                while (true) {
+                    try {
+                        Matrix m = new Matrix(inputMatrix(1));
+                        Matrix m1 = new Matrix(inputMatrix(2));
+                        if (m.rows() != m1.rows() || m.cols() != m1.cols()) {
+                            throw new IllegalArgumentException("Matrix dimensions must match for addition");
+                        }
+                        Matrix result = m.additionMatrix(m1);
+                        System.out.println("Result:");
+                        m.printMatrix();
+                        System.out.println("+");
+                        m1.printMatrix();
+                        System.out.println("=");
+                        result.printMatrix();
+                        break;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                break;
+            case 2:
+                while (true) {
+                    try {
+                        Matrix m = new Matrix(inputMatrix(1));
+                        Matrix m1 = new Matrix(inputMatrix(2));
+                        if (m.rows() != m1.rows() || m.cols() != m1.cols()) {
+                            throw new IllegalArgumentException("Matrix dimensions must match for subtraction");
+                        }
+                        Matrix result = m.subtractionMatrix(m1);
+                        m.printMatrix();
+                        System.out.println("-");
+                        m1.printMatrix();
+                        System.out.println("=");
+                        result.printMatrix();
+                        break;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                break;
+            case 3:
+                Matrix m = new Matrix(inputMatrix(1));
+                Matrix m1 = new Matrix(inputMatrix(2));
+                Matrix result = m.multiplicationMatrix(m1);
+                m.printMatrix();
+                System.out.println("*");
+                m1.printMatrix();
+                System.out.println("=");
+                result.printMatrix();
+                break;
+            case 4:
+                check = false;
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
         }
     }
+}
+
+
     public static int getInt()
     {
         Scanner sc = new Scanner(System.in);
