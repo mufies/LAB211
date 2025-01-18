@@ -16,15 +16,6 @@ public class Matrix {
         this.matrix = matrix;
     }
 
-    public int rows()
-    {
-        return this.rows;
-    }
-    public int cols()
-    {
-        return this.cols;
-    }
-
 
     public Matrix additionMatrix(Matrix matrix2) {
         if (this.rows != matrix2.rows || this.cols != matrix2.cols) {
