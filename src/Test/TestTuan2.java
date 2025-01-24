@@ -38,7 +38,6 @@ public class TestTuan2 {
                                 break;
                             case 3:
                                 System.out.println("Exiting...");
-                                scanner.close();
                                 check=false;
                                 break;
                             default:

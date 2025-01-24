@@ -23,12 +23,16 @@ public class LinearSearch {
        for(int i=0;i<x;i++)
        {
            a[i] = (int)(Math.random() * 10);
+ //eid
            if(a[i]==y)
-               pos=i;
-           if(i!=x-1)
-           System.out.print(a[i]+", ");
-           else
-               System.out.print(a[i]);
+           {
+                if(pos==-1)
+                {
+                    pos=i;
+                }
+           }
+
+           System.out.print(a[i]+" ");
        }
        System.out.println(" ]");
        System.out.println("Found at "+y+" at index: "+pos);

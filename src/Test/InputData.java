@@ -1,0 +1,52 @@
+package Test;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class InputData {
+    Scanner sc = new Scanner(System.in);
+
+    public int getInt()
+    {
+
+
+        int k;
+        while(true)
+        {
+            try
+            {
+                k = sc.nextInt();
+                sc.nextLine();
+                return k;
+            }catch(InputMismatchException e)
+            {
+                System.out.println("Wrong format");
+                sc.nextLine();
+
+            }
+        }
+
+    }
+
+    public double getDouble()
+    {
+
+
+        double k;
+        while(true)
+        {
+            try
+            {
+                k = sc.nextDouble();
+                sc.nextLine();
+                return k;
+            }catch(InputMismatchException e)
+            {
+                System.out.println("Wrong format");
+                sc.nextLine();
+
+            }
+        }
+
+    }
+}

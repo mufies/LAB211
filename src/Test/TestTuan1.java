@@ -1,5 +1,7 @@
 package Test;
 
+import Tuan1.*;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,12 +9,12 @@ public class TestTuan1 {
     Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 // Bai 1
-//      Counting c = new Counting("Hello the world");
-//        System.out.println(c.wordCount());
-//        System.out.println(c.charCount());
+      Counting c = new Counting("Hello the world");
+        System.out.println(c.wordCount());
+        System.out.println(c.charCount());
 
 
-//  bai 2
+////  bai 2
 //        System.out.println("Enter number of array ");
 //        int x = getInt();
 //        System.out.println("Enter search value");
