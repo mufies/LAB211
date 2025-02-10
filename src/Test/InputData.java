@@ -49,4 +49,24 @@ public class InputData {
         }
 
     }
+
+    public char getChar()
+    {
+        char c = (char) sc.nextShort();
+        return c;
+//        while(true)
+//        {
+//            String s = sc.nextLine();
+//            if(!checkBlank(s) && s.length() == 1)
+//            {
+//                c = s.charAt(0);
+//                return c;
+//            }
+//            else return ' ';
+//        }
+    }
+    public boolean checkBlank(String s)
+    {
+        return s.trim().isEmpty();
+    }
 }
