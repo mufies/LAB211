@@ -37,10 +37,9 @@ public class Students extends Person {
     }
 
     public String toString() {
-        return "Student{" +
+        return
                 super.toString() +
-                "yearOfAdmission=" + yearOfAdmission +
-                ", entranceEnglishScore=" + entranceEnglishScore +
-                '}';
+                " - " + yearOfAdmission +
+                " - " + entranceEnglishScore;
     }
 }

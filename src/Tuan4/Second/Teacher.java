@@ -49,11 +49,10 @@ public class Teacher extends Person{
 
     @Override
     public String toString() {
-        return "Teacher{" +
+        return
                 super.toString() +
-                "yearsInProfession=" + yearsInProfession +
-                ", contractType='" + contractType + '\'' +
-                ", salaryCoefficient=" + salaryCoefficient +
-                '}';
+                " - " + yearsInProfession +
+                " - " + contractType  +
+                " - " + salaryCoefficient;
     }
 }

@@ -4,6 +4,7 @@ package Tuan4.Second;
 
         import java.time.Year;
         import java.util.Scanner;
+        import java.util.regex.Pattern;
 
 public class Person {
             InputData inputData = new InputData();
@@ -27,6 +28,7 @@ public class Person {
                 System.out.println("Enter ID: ");
                 int id = inputData.getInt();
                 if (String.valueOf(id).length() != 6) {
+                    System.out.println("Wrong format");
                     id = inputData.getInt();
                 }
                 this.id = id;
@@ -39,7 +41,9 @@ public class Person {
                 this.FullName = FullName;
                 System.out.println("Enter Phone Number: ");
                 String phoneNumber = sc.nextLine();
-                if (!phoneNumber.matches("\\d{12}")) {
+                Pattern pattern = Pattern.compile("^[0-9]{12}$");
+
+                while (!pattern.matcher(phoneNumber).matches()) {
                     System.out.println("Wrong format");
                     phoneNumber = sc.nextLine();
                 }
@@ -106,11 +110,10 @@ public class Person {
             @Override
             public String toString() {
                 return
-                        "id=" + id +
-                        ", FullName='" + FullName + '\'' +
-                        ", phoneNumber='" + phoneNumber + '\'' +
-                        ", birthYear=" + birthYear +
-                        ", Major='" + Major + '\'' +
-                        '}';
+                         id +
+                        " - " + FullName +
+                        " - " + phoneNumber +
+                        " - " + birthYear +
+                        " - " + Major;
             }
         }
