@@ -49,6 +49,11 @@ public class InputData {
         }
 
     }
+    public String getString()
+    {
+        String s = sc.nextLine();
+        return s;
+    }
 
     public char getChar()
     {

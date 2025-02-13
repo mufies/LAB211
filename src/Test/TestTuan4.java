@@ -1,6 +1,7 @@
 package Test;
 
 import Tuan4.First.Student;
+import Tuan4.First.StudentList;
 import Tuan4.Second.PersonList;
 import Tuan4.Second.Students;
 import Tuan4.Second.Teacher;
@@ -29,8 +30,8 @@ public class TestTuan4 {
 //                    int dem = 0;
 //                    while(true)
 //                    {
-//
-//                        String id = "S" + (sl.getStudents().size() + 1);
+//                        System.out.println("Enter student id");
+//                        String id = input.getString();
 //                        System.out.print("Enter student name: ");
 //                        String name = input.getString();
 //                        System.out.print("Enter semester: ");
@@ -128,103 +129,103 @@ public class TestTuan4 {
 //
 //            }
 //        }
-        PersonList pl = new PersonList();
-        while (true)
-        {
-            System.out.println("--------------INFORMATION MANAGEMENT--------------");
-            System.out.println("1. Teacher");
-            System.out.println("2. Student");
-            System.out.println("3. Person");
-            System.out.println("4. Exit");
-            System.out.println("--------------------------------------------------");
-            System.out.print("Enter your choice: ");
-            int choice = input.getInt();
-            switch (choice)
-            {
-                case 1:
-                    boolean check = true;
-                    while (check) {
-                        System.out.println("--------------TEACHER--------------");
-                        System.out.println("1. Input");
-                        System.out.println("2. Print");
-                        System.out.println("3. Exit");
-                        System.out.print("Enter your choice: ");
-                        int choice1 = input.getInt();
-                        switch (choice1) {
-                            case 1:
-                                Teacher teacher = new Teacher();
-                                teacher.inputAll();
-                                pl.addPerson(teacher);
-                                break;
-                            case 2:
-                                pl.printTeacherList();
-                                break;
-                            case 3:
-                                check=false;
-                                break;
-                            default:
-                                System.out.println("Invalid choice");
-                        }
-                    }
-                    break;
-                case 2:
-                    boolean check1 = true;
-                    while (check1) {
-                        System.out.println("--------------STUDENT--------------");
-                        System.out.println("1. Input");
-                        System.out.println("2. Print");
-                        System.out.println("3. Exit");
-                        System.out.print("Enter your choice: ");
-                        int choice2 = input.getInt();
-                        switch (choice2) {
-                            case 1:
-                                Students student = new Students();
-                                student.inputAll();
-                                pl.addPerson(student);
-                                break;
-                            case 2:
-                                pl.printStudentList();
-                                break;
-                            case 3:
-                                check1 = false;
-                                break;
-                            default:
-                                System.out.println("Invalid choice");
-                        }
-                    }
-                    break;
-                case 3:
-                    boolean check2 = true;
-                    while (check2) {
-                        System.out.println("--------------PERSON--------------");
-                        System.out.println("1. Search");
-                        System.out.println("2. Print all");
-                        System.out.println("3. Exit");
-                        System.out.print("Enter your choice: ");
-                        int choice3 = input.getInt();
-                        switch (choice3) {
-                            case 1:
-                                pl.findPersonByName(sc.nextLine());
-                                break;
-                            case 2:
-                                pl.printAll();
-                                break;
-                            case 3:
-                                check2 = false;
-                                break;
-                            default:
-                                System.out.println("Invalid choice");
-                        }
-                    }
-
-                    break;
-                case 4:
-                    System.out.println("Goodbye");
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid choice");
-            }
-
-        }
+//        PersonList pl = new PersonList();
+//        while (true)
+//        {
+//            System.out.println("--------------INFORMATION MANAGEMENT--------------");
+//            System.out.println("1. Teacher");
+//            System.out.println("2. Student");
+//            System.out.println("3. Person");
+//            System.out.println("4. Exit");
+//            System.out.println("--------------------------------------------------");
+//            System.out.print("Enter your choice: ");
+//            int choice = input.getInt();
+//            switch (choice)
+//            {
+//                case 1:
+//                    boolean check = true;
+//                    while (check) {
+//                        System.out.println("--------------TEACHER--------------");
+//                        System.out.println("1. Input");
+//                        System.out.println("2. Print");
+//                        System.out.println("3. Exit");
+//                        System.out.print("Enter your choice: ");
+//                        int choice1 = input.getInt();
+//                        switch (choice1) {
+//                            case 1:
+//                                Teacher teacher = new Teacher();
+//                                teacher.inputAll();
+//                                pl.addPerson(teacher);
+//                                break;
+//                            case 2:
+//                                pl.printTeacherList();
+//                                break;
+//                            case 3:
+//                                check=false;
+//                                break;
+//                            default:
+//                                System.out.println("Invalid choice");
+//                        }
+//                    }
+//                    break;
+//                case 2:
+//                    boolean check1 = true;
+//                    while (check1) {
+//                        System.out.println("--------------STUDENT--------------");
+//                        System.out.println("1. Input");
+//                        System.out.println("2. Print");
+//                        System.out.println("3. Exit");
+//                        System.out.print("Enter your choice: ");
+//                        int choice2 = input.getInt();
+//                        switch (choice2) {
+//                            case 1:
+//                                Students student = new Students();
+//                                student.inputAll();
+//                                pl.addPerson(student);
+//                                break;
+//                            case 2:
+//                                pl.printStudentList();
+//                                break;
+//                            case 3:
+//                                check1 = false;
+//                                break;
+//                            default:
+//                                System.out.println("Invalid choice");
+//                        }
+//                    }
+//                    break;
+//                case 3:
+//                    boolean check2 = true;
+//                    while (check2) {
+//                        System.out.println("--------------PERSON--------------");
+//                        System.out.println("1. Search");
+//                        System.out.println("2. Print all");
+//                        System.out.println("3. Exit");
+//                        System.out.print("Enter your choice: ");
+//                        int choice3 = input.getInt();
+//                        switch (choice3) {
+//                            case 1:
+//                                pl.findPersonByName(sc.nextLine());
+//                                break;
+//                            case 2:
+//                                pl.printAll();
+//                                break;
+//                            case 3:
+//                                check2 = false;
+//                                break;
+//                            default:
+//                                System.out.println("Invalid choice");
+//                        }
+//                    }
+//
+//                    break;
+//                case 4:
+//                    System.out.println("Goodbye");
+//                    System.exit(0);
+//                default:
+//                    System.out.println("Invalid choice");
+//            }
+//
+//        }
     }
 }
