@@ -12,25 +12,13 @@ public class Students extends Person {
         this.entranceEnglishScore = 0.0;
     }
 
-    public void inputAll() {
-        super.inputAll();
+    public void inputAll(int id, String FullName, String phoneNumber, int birthYear, String Major, int yearOfAdmission, double entranceEnglishScore) {
+        super.inputAll(id, FullName, phoneNumber, birthYear, Major);
 
-        int currentYear = Year.now().getValue();
-        int birthYear = super.getBirthDate();
-        System.out.println("Enter year of admission: ");
-        int yearOfAdmission = inputData.getInt();
-        while (yearOfAdmission < birthYear || yearOfAdmission > currentYear) {
-            System.out.println("Wrong format");
-            yearOfAdmission = inputData.getInt();
-        }
+
 
         this.yearOfAdmission = yearOfAdmission;
-        System.out.println("Enter entrance English score: ");
-        double entranceEnglishScore = inputData.getDouble();
-        while (entranceEnglishScore < 0 || entranceEnglishScore > 100) {
-            System.out.println("Wrong format");
-            entranceEnglishScore = inputData.getDouble();
-        }
+
 
         this.entranceEnglishScore = entranceEnglishScore;
 

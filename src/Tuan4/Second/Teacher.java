@@ -15,34 +15,10 @@ public class Teacher extends Person{
         this.salaryCoefficient = 0.0;
     }
 
-    public void inputAll() {
-        super.inputAll();
-        Scanner sc = new Scanner(System.in);
-        int age = Year.now().getValue() - super.getBirthDate();
-
-        System.out.println("Enter years in profession: ");
-        int yearsInProfession = inputData.getInt();
-        while (yearsInProfession < 0 || yearsInProfession >= age) {
-            System.out.println("Wrong format");
-            yearsInProfession = inputData.getInt();
-        }
-
+    public void inputAll(int id, String FullName, String phoneNumber, int birthYear, String Major, int yearsInProfession, String contractType, double salaryCoefficient) {
+        super.inputAll(id, FullName, phoneNumber, birthYear, Major);
         this.yearsInProfession = yearsInProfession;
-        System.out.println("Enter contract type: ");
-        String contractType = sc.nextLine();
-        while (contractType.length() > 30) {
-            System.out.println("Wrong format");
-            contractType = sc.nextLine();
-        }
-
         this.contractType = contractType;
-        System.out.println("Enter salary coefficient: ");
-        double salaryCoefficient = inputData.getDouble();
-        while (salaryCoefficient < 0) {
-            System.out.println("Wrong format");
-            salaryCoefficient = inputData.getDouble();
-        }
-
         this.salaryCoefficient = salaryCoefficient;
 
     }

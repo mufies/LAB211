@@ -6,7 +6,9 @@ import Tuan4.Second.PersonList;
 import Tuan4.Second.Students;
 import Tuan4.Second.Teacher;
 
+import java.time.Year;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class TestTuan4 {
     public static void main(String[] args) {
@@ -129,103 +131,210 @@ public class TestTuan4 {
 //
 //            }
 //        }
-//        PersonList pl = new PersonList();
-//        while (true)
-//        {
-//            System.out.println("--------------INFORMATION MANAGEMENT--------------");
-//            System.out.println("1. Teacher");
-//            System.out.println("2. Student");
-//            System.out.println("3. Person");
-//            System.out.println("4. Exit");
-//            System.out.println("--------------------------------------------------");
-//            System.out.print("Enter your choice: ");
-//            int choice = input.getInt();
-//            switch (choice)
-//            {
-//                case 1:
-//                    boolean check = true;
-//                    while (check) {
-//                        System.out.println("--------------TEACHER--------------");
-//                        System.out.println("1. Input");
-//                        System.out.println("2. Print");
-//                        System.out.println("3. Exit");
-//                        System.out.print("Enter your choice: ");
-//                        int choice1 = input.getInt();
-//                        switch (choice1) {
-//                            case 1:
-//                                Teacher teacher = new Teacher();
-//                                teacher.inputAll();
-//                                pl.addPerson(teacher);
-//                                break;
-//                            case 2:
-//                                pl.printTeacherList();
-//                                break;
-//                            case 3:
-//                                check=false;
-//                                break;
-//                            default:
-//                                System.out.println("Invalid choice");
-//                        }
-//                    }
-//                    break;
-//                case 2:
-//                    boolean check1 = true;
-//                    while (check1) {
-//                        System.out.println("--------------STUDENT--------------");
-//                        System.out.println("1. Input");
-//                        System.out.println("2. Print");
-//                        System.out.println("3. Exit");
-//                        System.out.print("Enter your choice: ");
-//                        int choice2 = input.getInt();
-//                        switch (choice2) {
-//                            case 1:
-//                                Students student = new Students();
-//                                student.inputAll();
-//                                pl.addPerson(student);
-//                                break;
-//                            case 2:
-//                                pl.printStudentList();
-//                                break;
-//                            case 3:
-//                                check1 = false;
-//                                break;
-//                            default:
-//                                System.out.println("Invalid choice");
-//                        }
-//                    }
-//                    break;
-//                case 3:
-//                    boolean check2 = true;
-//                    while (check2) {
-//                        System.out.println("--------------PERSON--------------");
-//                        System.out.println("1. Search");
-//                        System.out.println("2. Print all");
-//                        System.out.println("3. Exit");
-//                        System.out.print("Enter your choice: ");
-//                        int choice3 = input.getInt();
-//                        switch (choice3) {
-//                            case 1:
-//                                pl.findPersonByName(sc.nextLine());
-//                                break;
-//                            case 2:
-//                                pl.printAll();
-//                                break;
-//                            case 3:
-//                                check2 = false;
-//                                break;
-//                            default:
-//                                System.out.println("Invalid choice");
-//                        }
-//                    }
-//
-//                    break;
-//                case 4:
-//                    System.out.println("Goodbye");
-//                    System.exit(0);
-//                default:
-//                    System.out.println("Invalid choice");
-//            }
-//
-//        }
+        PersonList pl = new PersonList();
+        InputData inputData = new InputData();
+        while (true)
+        {
+            System.out.println("--------------INFORMATION MANAGEMENT--------------");
+            System.out.println("1. Teacher");
+            System.out.println("2. Student");
+            System.out.println("3. Person");
+            System.out.println("4. Exit");
+            System.out.println("--------------------------------------------------");
+            System.out.print("Enter your choice: ");
+            int choice = input.getInt();
+            switch (choice)
+            {
+                case 1:
+                    boolean check = true;
+                    while (check) {
+                        System.out.println("--------------TEACHER--------------");
+                        System.out.println("1. Input");
+                        System.out.println("2. Print");
+                        System.out.println("3. Exit");
+                        System.out.print("Enter your choice: ");
+                        int choice1 = input.getInt();
+                        switch (choice1) {
+                            case 1:
+                                Teacher teacher = new Teacher();
+                                int currentYear = Year.now().getValue();
+                                System.out.println("Enter ID: ");
+                                int id = inputData.getInt();
+                                while (String.valueOf(id).length() != 6) {
+                                    System.out.println("Wrong format");
+                                    id = inputData.getInt();
+                                }
+                                System.out.println("Enter Full Name: ");
+                                String FullName = sc.nextLine();
+                                while (!FullName.matches("[a-zA-Z ]+")) {
+                                    System.out.println("Wrong format");
+                                    FullName = sc.nextLine();
+                                }
+                                System.out.println("Enter Phone Number: ");
+                                String phoneNumber = sc.nextLine();
+                                Pattern pattern = Pattern.compile("^[0-9]{12}$");
+
+                                while (!pattern.matcher(phoneNumber).matches()) {
+                                    System.out.println("Wrong format");
+                                    phoneNumber = sc.nextLine();
+                                }
+                                System.out.println("Enter Birth Year: ");
+                                int birthYear = inputData.getInt();
+                                if (birthYear < 1900 || birthYear >= currentYear) {
+                                    System.out.println("Wrong format");
+                                    birthYear = inputData.getInt();
+                                }
+
+                                System.out.println("Enter Major: ");
+                                String Major = sc.nextLine();
+                                if (Major.length() > 30) {
+                                    System.out.println("Wrong format");
+                                    Major = sc.nextLine();
+                                }
+                                int age = Year.now().getValue() - birthYear;
+
+                                System.out.println("Enter years in profession: ");
+                                int yearsInProfession = inputData.getInt();
+                                while (yearsInProfession < 0 || yearsInProfession >= age) {
+                                    System.out.println("Wrong format");
+                                    yearsInProfession = inputData.getInt();
+                                }
+
+                              System.out.println("Enter contract type: ");
+                              String contractType = input.getString();
+                              while (!contractType.equalsIgnoreCase("Long") && !contractType.equalsIgnoreCase("Short")) {
+                                  System.out.println("Wrong format");
+                                  contractType = input.getString();
+                              }
+                                System.out.println("Enter salary coefficient: ");
+                                double salaryCoefficient = inputData.getDouble();
+                                while (salaryCoefficient < 0) {
+                                    System.out.println("Wrong format");
+                                    salaryCoefficient = inputData.getDouble();
+                                }
+
+                                teacher.inputAll(id, FullName, phoneNumber, birthYear, Major, yearsInProfession, contractType, salaryCoefficient);
+                                pl.addPerson(teacher);
+                                break;
+                            case 2:
+                                pl.printTeacherList();
+                                break;
+                            case 3:
+                                check=false;
+                                break;
+                            default:
+                                System.out.println("Invalid choice");
+                        }
+                    }
+                    break;
+                case 2:
+                    boolean check1 = true;
+                    while (check1) {
+                        System.out.println("--------------STUDENT--------------");
+                        System.out.println("1. Input");
+                        System.out.println("2. Print");
+                        System.out.println("3. Exit");
+                        System.out.print("Enter your choice: ");
+                        int choice2 = input.getInt();
+                        switch (choice2) {
+                            case 1:
+                                int currentYear = Year.now().getValue();
+                                System.out.println("Enter ID: ");
+                                int id = inputData.getInt();
+                                while (String.valueOf(id).length() != 6) {
+                                    System.out.println("Wrong format");
+                                    id = inputData.getInt();
+                                }
+                                System.out.println("Enter Full Name: ");
+                                String FullName = sc.nextLine();
+                                while (!FullName.matches("[a-zA-Z ]+")) {
+                                    System.out.println("Wrong format");
+                                    FullName = sc.nextLine();
+                                }
+                                System.out.println("Enter Phone Number: ");
+                                String phoneNumber = sc.nextLine();
+                                Pattern pattern = Pattern.compile("^[0-9]{12}$");
+
+                                while (!pattern.matcher(phoneNumber).matches()) {
+                                    System.out.println("Wrong format");
+                                    phoneNumber = sc.nextLine();
+                                }
+                                System.out.println("Enter Birth Year: ");
+                                int birthYear = inputData.getInt();
+                                if (birthYear < 1900 || birthYear >= currentYear) {
+                                    System.out.println("Wrong format");
+                                    birthYear = inputData.getInt();
+                                }
+
+                                System.out.println("Enter Major: ");
+                                String Major = sc.nextLine();
+                                if (Major.length() > 30) {
+                                    System.out.println("Wrong format");
+                                    Major = sc.nextLine();
+                                }
+                                int age = Year.now().getValue() - birthYear;
+                                Students student = new Students();
+
+                                System.out.println("Enter year of admission: ");
+                                int yearOfAdmission = inputData.getInt();
+                                while (yearOfAdmission < birthYear || yearOfAdmission > currentYear) {
+                                    System.out.println("Wrong format");
+                                    yearOfAdmission = inputData.getInt();
+                                }
+
+                                System.out.println("Enter entrance English score: ");
+                                double entranceEnglishScore = inputData.getDouble();
+                                while (entranceEnglishScore < 0 || entranceEnglishScore > 100) {
+                                    System.out.println("Wrong format");
+                                    entranceEnglishScore = inputData.getDouble();
+                                }
+
+                                student.inputAll(id, FullName, phoneNumber, birthYear, Major, yearOfAdmission, entranceEnglishScore);
+                                pl.addPerson(student);
+                                break;
+                            case 2:
+                                pl.printStudentList();
+                                break;
+                            case 3:
+                                check1 = false;
+                                break;
+                            default:
+                                System.out.println("Invalid choice");
+                        }
+                    }
+                    break;
+                case 3:
+                    boolean check2 = true;
+                    while (check2) {
+                        System.out.println("--------------PERSON--------------");
+                        System.out.println("1. Search");
+                        System.out.println("2. Print all");
+                        System.out.println("3. Exit");
+                        System.out.print("Enter your choice: ");
+                        int choice3 = input.getInt();
+                        switch (choice3) {
+                            case 1:
+                                pl.findPersonByName(sc.nextLine());
+                                break;
+                            case 2:
+                                pl.printAll();
+                                break;
+                            case 3:
+                                check2 = false;
+                                break;
+                            default:
+                                System.out.println("Invalid choice");
+                        }
+                    }
+
+                    break;
+                case 4:
+                    System.out.println("Goodbye");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice");
+            }
+
+        }
     }
 }

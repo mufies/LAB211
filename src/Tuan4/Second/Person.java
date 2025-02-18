@@ -22,46 +22,15 @@ public class Person {
                 Major = "";
             }
 
-            public void inputAll() {
-                Scanner sc = new Scanner(System.in);
-                int currentYear = Year.now().getValue();
-                System.out.println("Enter ID: ");
-                int id = inputData.getInt();
-                if (String.valueOf(id).length() != 6) {
-                    System.out.println("Wrong format");
-                    id = inputData.getInt();
-                }
-                this.id = id;
-                System.out.println("Enter Full Name: ");
-                String FullName = sc.nextLine();
-                while (!FullName.matches("[a-zA-Z ]+")) {
-                    System.out.println("Wrong format");
-                    FullName = sc.nextLine();
-                }
-                this.FullName = FullName;
-                System.out.println("Enter Phone Number: ");
-                String phoneNumber = sc.nextLine();
-                Pattern pattern = Pattern.compile("^[0-9]{12}$");
+            public void inputAll(int id, String FullName, String phoneNumber, int birthYear, String Major) {
 
-                while (!pattern.matcher(phoneNumber).matches()) {
-                    System.out.println("Wrong format");
-                    phoneNumber = sc.nextLine();
-                }
+                this.id = id;
+
+                this.FullName = FullName;
+
                 this.phoneNumber = phoneNumber;
-                System.out.println("Enter Birth Year: ");
-                int birthYear = inputData.getInt();
-                if (birthYear < 1900 || birthYear >= currentYear) {
-                    System.out.println("Wrong format");
-                    birthYear = inputData.getInt();
-                }
 
                 this.birthYear = birthYear;
-                System.out.println("Enter Major: ");
-                String Major = sc.nextLine();
-                if (Major.length() > 30) {
-                    System.out.println("Wrong format");
-                    Major = sc.nextLine();
-                }
 
                 this.Major = Major;
 
