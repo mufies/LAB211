@@ -69,6 +69,6 @@ public class Reservation {
                 ", customerName='" + customerName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", RoomNumber=" + RoomNumber +
-                ", Date='" + Date + '\'';
+                ", BookingDate='" + Date + '\'';
     }
 }

@@ -1,5 +1,6 @@
 package Tuan5.RoomReservations;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import Test.InputData;
@@ -44,7 +45,7 @@ public class ReservationView {
         while (true) {
 
             bookingDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            if (bookingDate.isAfter(LocalDate.now())) {
+            if (bookingDate.isAfter(LocalDate.now()) || bookingDate.isEqual(LocalDate.now())) {
                 break;
             } else {
                 System.out.println("Date must be after the present date. Enter Booking Date again:");
@@ -73,33 +74,36 @@ public class ReservationView {
             System.out.println("Wrong format");
             FullName = inputData.getString();
         }
+
         System.out.println("Enter Phone Number: ");
         String phoneNumber = inputData.getString();
         Pattern pattern = Pattern.compile("^[0-9]{12}$");
-
         while (!pattern.matcher(phoneNumber).matches()) {
             System.out.println("Wrong format");
             phoneNumber = inputData.getString();
         }
+
         System.out.println("Enter Room Number: ");
         int roomNumber = inputData.getInt();
 
         System.out.println("Enter Booking Date");
-
-
         String dateStr = inputData.getDate();
         LocalDate bookingDate = null;
         while (true) {
-
-            bookingDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            if (bookingDate.isAfter(LocalDate.now())) {
-                break;
-            } else {
-                System.out.println("Date must be after the present date. Enter Booking Date again:");
+            try {
+                bookingDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if (bookingDate.isAfter(LocalDate.now()) || bookingDate.isEqual(LocalDate.now())) {
+                    break;
+                } else {
+                    System.out.println("Enter Booking Date again:");
+                    dateStr = inputData.getDate();
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Enter Booking Date again:");
                 dateStr = inputData.getDate();
             }
-
         }
+
         System.out.println("Need airport pick up? (Y/N)");
         String airportPickUp = inputData.getString();
         while (!airportPickUp.equalsIgnoreCase("Y") && !airportPickUp.equalsIgnoreCase("N")) {
@@ -107,32 +111,34 @@ public class ReservationView {
             airportPickUp = inputData.getString();
         }
 
-
         System.out.println("Enter flight number: ");
         String flightNumber = inputData.getString();
         System.out.println("Enter seat number: ");
-        String seatNumber = inputData.getDate();
+        String seatNumber = inputData.getString();
 
-
-        System.out.println("Enter Time Pick Up");
-
-        String timePickUpStr = inputData.getDate();
-        LocalDate timePickUp = null;
-
+        System.out.println("Enter Time Pick Up (dd/MM/yyyy hh:mma): ");
+        String timePickUpStr = inputData.getString();
+        LocalDateTime timePickUp = null;
         while (true) {
-            timePickUp = LocalDate.parse(timePickUpStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            if (timePickUp.isAfter(LocalDate.now()) && timePickUp.isBefore(bookingDate)) {
-                break;
-            } else {
-                System.out.println("Time Pick Up must be after the present date and before Booking Date. Enter Time Pick Up again:");
-                timePickUpStr = inputData.getDate();
+            try {
+                timePickUp = LocalDateTime.parse(timePickUpStr, DateTimeFormatter.ofPattern("dd/MM/yyyy h:mma"));
+                if (timePickUp.toLocalDate().isBefore(bookingDate)) {
+                    break;
+                } else {
+                    System.out.println("Enter Time Pick Up again:");
+                    timePickUpStr = inputData.getString();
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid format");
+                timePickUpStr = inputData.getString();
             }
-
-
-
         }
-        return new FlightInformation(id, FullName, phoneNumber, roomNumber, dateStr, flightNumber, seatNumber, timePickUpStr);
+
+        String formattedTimePickUp = timePickUp.format(DateTimeFormatter.ofPattern("dd/MM/yyyy h:mma"));
+
+        return new FlightInformation(id, FullName, phoneNumber, roomNumber, dateStr, flightNumber, seatNumber, formattedTimePickUp);
     }
+
     public void displayFlightInfo(List<FlightInformation> reservations) {
         if (reservations.isEmpty())
         {

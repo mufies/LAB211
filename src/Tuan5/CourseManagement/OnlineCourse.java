@@ -14,14 +14,11 @@ public class OnlineCourse extends Course {
         this.note = "";
     }
 
-    public void inputAll(InputData sc, CourseList cl) {
-        super.InputAll(sc, cl);
-        System.out.println("Enter platform: ");
-        platform = sc.getString();
-        System.out.println("Enter instructor: ");
-        instructor = sc.getString();
-        System.out.println("Enter note: ");
-        note = sc.getString();
+    public void inputAll(String courseID,String CourseName,int credit, String platform, String instructor, String note) {
+        super.InputAll(courseID, CourseName, credit);
+        this.platform = platform;
+        this.instructor = instructor;
+        this.note = note;
     }
 
     public String getPlatform() {

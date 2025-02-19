@@ -13,33 +13,10 @@ public class Course {
         this.credit = 0;
     }
 
-    public void InputAll(InputData sc, CourseList cl) {
-        while (true) {
-            System.out.println("Enter course ID: ");
-            CourseID = sc.getString();
-            if (cl.findByID(CourseID)) {
-                System.out.println("Course ID already exists. Please enter a different ID.");
-            } else {
-                break;
-            }
-        }
-
-        while (true) {
-            System.out.println("Enter course name: ");
-            CourseName = sc.getString();
-            if (cl.findByName(CourseName)) {
-                System.out.println("Course Name already exists. Please enter a different name.");
-            } else {
-                break;
-            }
-        }
-
-        while (true) {
-            System.out.println("Enter credit: ");
-            credit = sc.getInt();
-            if (credit > 0) break;
-            System.out.println("Credit must be greater than 0.");
-        }
+    public void InputAll(String courseID,String CourseName,int credit) {
+        this.CourseID = courseID;
+        this.CourseName = CourseName;
+        this.credit = credit;
     }
 
     public String getCourseName() {

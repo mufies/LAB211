@@ -1,6 +1,5 @@
 package Tuan5.CourseManagement;
 
-import Test.InputData;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,23 +16,11 @@ public class OfflineCourse extends Course {
         this.campus = "";
     }
 
-    public void inputAll(InputData sc, CourseList cl) throws ParseException {
-        super.InputAll(sc, cl);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("Enter begin date (dd/MM/yyyy): ");
-        begin = sc.getDate();
-
-        Date beginDate = sdf.parse(begin);
-        while (true) {
-            System.out.println("Enter end date (must be after begin date): ");
-            end = sc.getDate();
-            if (sdf.parse(end).after(beginDate)) break;
-            System.out.println("End date must be after begin date.");
-        }
-
-        System.out.println("Enter campus: ");
-        campus = sc.getString();
+    public void inputAll(String courseID, String courseName, int credit, String begin, String end, String campus) {
+        super.InputAll(courseID, courseName, credit);
+        this.begin = begin;
+        this.end = end;
+        this.campus = campus;
     }
 
     public String getBegin() {

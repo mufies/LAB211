@@ -87,6 +87,7 @@ public class ReservationList {
                         }
 
                     }
+                    c.setDate(newDate);
                 }
 
 
