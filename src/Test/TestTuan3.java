@@ -4,18 +4,18 @@ import Tuan3.*;
 public class TestTuan3 {
     public static void main(String[] args) {
         InputData input = new InputData();
-        System.out.print("Enter number of array:");
-        int x = input.getInt();
-        BubbleSort bs = new BubbleSort(x);
-        bs.generate();
-        System.out.print("Unsorted array: [");
-        bs.print();
-        System.out.print("]");
-        System.out.println();
-        bs.bubblesort();
-        System.out.print("Sorted array: [");
-        bs.print();
-        System.out.print("]");
+//        System.out.print("Enter number of array:");
+//        int x = input.getInt();
+//        BubbleSort bs = new BubbleSort(x);
+//        bs.generate();
+//        System.out.print("Unsorted array: [");
+//        bs.print();
+//        System.out.print("]");
+//        System.out.println();
+//        bs.bubblesort();
+//        System.out.print("Sorted array: [");
+//        bs.print();
+//        System.out.print("]");
 
 //        System.out.print("Enter number of array: ");
 //        int x = input.getInt();
