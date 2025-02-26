@@ -13,7 +13,7 @@ public class BubbleSort {
         }
     }
 
-    public void bubbleSort(int[] arr) {
+    public void bubblesort() {
         int n = arr.length;
         boolean swapped;
         for (int i = 0; i < n - 1; i++) {
