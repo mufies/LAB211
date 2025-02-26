@@ -13,12 +13,12 @@ import java.util.Date;
 public class TestTuan5 {
     public static void main(String[] args) throws ParseException {
         InputData input = new InputData();
-//        System.out.println("Input 2 num");
-//        String a = input.getStringNumber();
-//        String b = input.getStringNumber();
-//        LargeNum largeNum = new LargeNum();
-//        largeNum.add(a, b);
-//        System.out.println(largeNum.getRes());
+        System.out.println("Input 2 num");
+        String a = input.getStringNumber();
+        String b = input.getStringNumber();
+        LargeNum largeNum = new LargeNum();
+        largeNum.add(a, b);
+        System.out.println(largeNum.getRes());
 //        largeNum.Multiply(a, b);
 //        System.out.println(largeNum.getRes());
 
@@ -181,44 +181,44 @@ public class TestTuan5 {
 //        }
 
 
-        ReservationList rl = new ReservationList();
-        ReservationView rv = new ReservationView();
-        while (true)
-        {
-            System.out.println("*** Reservation Management ***");
-            System.out.println("1. Add reservation");
-            System.out.println("2. Update reservation");
-            System.out.println("3. Remove reservation");
-            System.out.println("4. Print Flight reservations");
-            System.out.println("5. Print all reservations");
-            System.out.println("6. Exit");
-            System.out.print("Enter your choice: ");
-            int choice = input.getInt();
-            switch (choice)
-            {
-                case 1:
-                    rl.addReservation(rv.getFlightInfo());
-                    break;
-                case 2:
-                    rl.updateReservation();
-                    break;
-                case 3:
-                    rl.deleteReservation();
-                    break;
-                case 4:
-                    rv.displayFlightInfo(rl.getRl());
-                    break;
-                case 5:
-                    rv.displayAll(rl.getRl());
-                    break;
-                case 6:
-                    System.out.println("Exiting program...");
-                    return;
-                default:
-                    System.out.println("Invalid choice! Please enter a number between 1-6.");
-
-            }
-        }
+//        ReservationList rl = new ReservationList();
+//        ReservationView rv = new ReservationView();
+//        while (true)
+//        {
+//            System.out.println("*** Reservation Management ***");
+//            System.out.println("1. Add reservation");
+//            System.out.println("2. Update reservation");
+//            System.out.println("3. Remove reservation");
+//            System.out.println("4. Print Flight reservations");
+//            System.out.println("5. Print all reservations");
+//            System.out.println("6. Exit");
+//            System.out.print("Enter your choice: ");
+//            int choice = input.getInt();
+//            switch (choice)
+//            {
+//                case 1:
+//                    rl.addReservation(rv.getFlightInfo());
+//                    break;
+//                case 2:
+//                    rl.updateReservation();
+//                    break;
+//                case 3:
+//                    rl.deleteReservation();
+//                    break;
+//                case 4:
+//                    rv.displayFlightInfo(rl.getRl());
+//                    break;
+//                case 5:
+//                    rv.displayAll(rl.getRl());
+//                    break;
+//                case 6:
+//                    System.out.println("Exiting program...");
+//                    return;
+//                default:
+//                    System.out.println("Invalid choice! Please enter a number between 1-6.");
+//
+//            }
+//        }
 
 
     }

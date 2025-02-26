@@ -23,7 +23,7 @@ public class LargeNum {
         for (int k = a.length()-1; k >= 0; k--) {
             int sum = (a.charAt(k) - '0') + (b.charAt(k) - '0') + nho;
             nho = sum/10;
-            h1 = sum%10 + h1;
+            h1 = sum % 10 + h1;
         }
         if(nho == 1) h1 = "1" + h1;
         res = h1;
