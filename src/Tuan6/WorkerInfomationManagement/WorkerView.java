@@ -1,4 +1,4 @@
-package Tuan6.ContactManagement;
+package Tuan6.WorkerInfomationManagement;
 
 import Test.InputData;
 
@@ -25,6 +25,11 @@ public class WorkerView {
 
     public void printWorker(List<Worker> workerList)
     {
+        if(workerList.isEmpty()) {
+            System.out.println("Empty");
+            return;
+        }
+
         System.out.println("Worker Information");
         System.out.println("Code - Name - Age - Salary - Status - Date");
        for(Worker w : workerList)

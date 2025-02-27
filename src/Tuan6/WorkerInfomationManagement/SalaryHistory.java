@@ -1,4 +1,4 @@
-package Tuan6.ContactManagement;
+package Tuan6.WorkerInfomationManagement;
 
 public class SalaryHistory {
     private double salary;

@@ -17,20 +17,20 @@ public class TestTuan3 {
 //        bs.print();
 //        System.out.print("]");
 
-//        System.out.print("Enter number of array: ");
-//        int x = input.getInt();
-//        QuickSort quickSort = new QuickSort(x);
-//        quickSort.generate();
-//        System.out.print("Unsorted array: [");
-//
-//        quickSort.print();
-//        System.out.print("]");
-//
-//        System.out.println();
-//        System.out.print("Sorted array: [");
-//        quickSort.quicksort(0, quickSort.arr.length-1);
-//        quickSort.print();
-//        System.out.print("]");
+        System.out.print("Enter number of array: ");
+        int x = input.getInt();
+        QuickSort quickSort = new QuickSort(x);
+        quickSort.generate();
+        System.out.print("Unsorted array: [");
+
+        quickSort.print();
+        System.out.print("]");
+
+        System.out.println();
+        System.out.print("Sorted array: [");
+        quickSort.quicksort(0, quickSort.arr.length-1);
+        quickSort.print();
+        System.out.print("]");
 
 //        System.out.println("Enter number of array: ");
 //        int x = input.getInt();
