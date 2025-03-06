@@ -46,6 +46,7 @@ public class LargeNum {
                 result[p2] = sum % 10;
             }
         }
+
         StringBuilder sb = new StringBuilder();
         for (int num : result) {
             if (!(sb.isEmpty() && num == 0)) {
