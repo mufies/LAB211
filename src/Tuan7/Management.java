@@ -83,7 +83,7 @@ public class Management {
                     }
 
                     if (!orderExists) {
-                        ol.add(new Order(productName, quantity, f.getPrice()));
+                        ol.add(new Order(f.getName(), quantity, f.getPrice()));
                         f.setQuantity(f.getQuantity() - quantity);
                     }
 
