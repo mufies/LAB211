@@ -97,11 +97,14 @@ public class Management {
 
             System.out.println("Do you want to order now? (Y/N)");
             String c = input.getString();
-            if (c.equalsIgnoreCase("n")) {
-                break;
-            } else if (!c.equalsIgnoreCase("y")) {
+            while (!c.equalsIgnoreCase("Y") && !c.equalsIgnoreCase("N")) {
                 System.out.println("Invalid input");
+                c = input.getString();
             }
+            if (c.equalsIgnoreCase("N")) {
+                break;
+            }
+
         }
         System.out.println("Product | Quantity | Price | Amount");
             for(Order o : ol) {
