@@ -57,62 +57,52 @@ public class Management {
         }
 
             List<Order> ol = new ArrayList<>();
-            while (true) {
-                System.out.println("Enter product name: ");
-                String productName = input.getString();
-                System.out.println("Enter quantity: ");
-                int quantity = input.getInt();
-                boolean check = false;
-                for (Fruit f : fl) {
-                    if (f.getName().contains(productName)) {
-                        for(Order o : ol) {
-                            if(o.getProductName().contains(productName) && f.getQuantity() >= quantity) {
-                                o.setQuantity(o.getQuantity() + quantity);
-                                f.setQuantity(f.getQuantity() - quantity);
-                                break;
+        while (true) {
+            System.out.println("Enter product name: ");
+            String productName = input.getString();
+            System.out.println("Enter quantity: ");
+            int quantity = input.getInt();
+            boolean found = false;
 
-                            }
-                            else if(o.getProductName().contains(productName) && f.getQuantity() < quantity) {
-                                System.out.println("Not enough quantity");
-                                break;
-                            }
-
-
-
-                        }
-
-                            if(f.getQuantity() >= quantity) {
-                                Order o = new Order(productName, quantity, f.getPrice());
-                                f.setQuantity(f.getQuantity() - quantity);
-                                ol.add(o);
-                            }
-                            else {
-                                System.out.println("Not enough quantity");
-                            }
-
-
-                        check=true;
-
+            for (Fruit f : fl) {
+                if (f.getName().contains(productName)) {
+                    found = true;
+                    if (f.getQuantity() < quantity) {
+                        System.out.println("Not enough quantity");
+                        break;
                     }
 
+                    boolean orderExists = false;
+                    for (Order o : ol) {
+                        if (o.getProductName().contains(productName)) {
+                            o.setQuantity(o.getQuantity() + quantity);
+                            f.setQuantity(f.getQuantity() - quantity);
+                            orderExists = true;
+                            break;
+                        }
+                    }
 
-                }
-                if(!check)
-                {
-                    System.out.println("Invalid product");
-                }
-                System.out.println("Do you want to order now? (Y/N)");
-                String c = input.getString();
-                if (c.equalsIgnoreCase("n")) {
+                    if (!orderExists) {
+                        ol.add(new Order(productName, quantity, f.getPrice()));
+                        f.setQuantity(f.getQuantity() - quantity);
+                    }
+
                     break;
                 }
-                else if(c.equalsIgnoreCase("y")) {
-                   continue;
-                }
-                else {
-                    System.out.println("Invalid input");
-                }
             }
+
+            if (!found) {
+                System.out.println("Invalid product");
+            }
+
+            System.out.println("Do you want to order now? (Y/N)");
+            String c = input.getString();
+            if (c.equalsIgnoreCase("n")) {
+                break;
+            } else if (!c.equalsIgnoreCase("y")) {
+                System.out.println("Invalid input");
+            }
+        }
         System.out.println("Product | Quantity | Price | Amount");
             for(Order o : ol) {
                 System.out.println(o.getProductName() + " " + o.getQuantity() + " " + o.getPrice() + "$ " + o.getPrice()*o.getQuantity());
