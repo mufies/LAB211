@@ -8,20 +8,16 @@ import java.util.Scanner;
 public class InputData {
     Scanner sc = new Scanner(System.in);
 
-    public int getInt()
-    {
+    public int getInt() {
 
 
         int k;
-        while(true)
-        {
-            try
-            {
+        while (true) {
+            try {
                 k = sc.nextInt();
                 sc.nextLine();
                 return k;
-            }catch(InputMismatchException e)
-            {
+            } catch (InputMismatchException e) {
                 System.out.println("Wrong format");
                 sc.nextLine();
 
@@ -30,20 +26,16 @@ public class InputData {
 
     }
 
-    public double getDouble()
-    {
+    public double getDouble() {
 
 
         double k;
-        while(true)
-        {
-            try
-            {
+        while (true) {
+            try {
                 k = sc.nextDouble();
                 sc.nextLine();
                 return k;
-            }catch(InputMismatchException e)
-            {
+            } catch (InputMismatchException e) {
                 System.out.println("Wrong format");
                 sc.nextLine();
 
@@ -51,23 +43,22 @@ public class InputData {
         }
 
     }
-    public String getString()
-    {
-       String s = sc.nextLine();
-       while (checkBlank(s)) {
-           System.out.println("Input is blank");
-           s = sc.nextLine();
-       }
-       return s;
+
+    public String getString() {
+        String s = sc.nextLine();
+        while (checkBlank(s)) {
+            System.out.println("Input is blank");
+            s = sc.nextLine();
+        }
+        return s;
     }
-    public String getStringButContainBlank()
-    {
+
+    public String getStringButContainBlank() {
         String s = sc.nextLine();
         return s;
     }
 
-    public char getChar()
-    {
+    public char getChar() {
         char c = (char) sc.nextShort();
         return c;
 //        while(true)
@@ -82,32 +73,26 @@ public class InputData {
 //        }
     }
 
-    public String getStringNumber()
-    {
+    public String getStringNumber() {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
-        while(true)
-        {
-            if(s.matches("[0-9]+"))
-            {
+        while (true) {
+            if (s.matches("[0-9]+")) {
                 return s;
-            }
-            else
-            {
+            } else {
                 System.out.println("Wrong format");
                 s = sc.nextLine();
             }
         }
     }
 
-    public boolean checkBlank(String s)
-    {
+    public boolean checkBlank(String s) {
         return s.trim().isEmpty();
     }
-    public String getDate()
-    {
+
+    public String getDate() {
         String date = sc.nextLine();
-        while(true) {
+        while (true) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             sdf.setLenient(false);
             try {
@@ -119,5 +104,21 @@ public class InputData {
             }
         }
 
+    }
+
+    public float getFloat() {
+        float k;
+        while (true) {
+            try {
+                k = sc.nextFloat();
+                sc.nextLine();
+                return k;
+            } catch (InputMismatchException e) {
+                System.out.println("Wrong format");
+                sc.nextLine();
+
+            }
+
+        }
     }
 }
