@@ -1,8 +1,8 @@
 package Tuan5.CourseManagement;
 
-import Test.InputData;
 
-public class Course {
+
+public class Course  {
     private String CourseName;
     private String CourseID;
     private int credit;

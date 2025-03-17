@@ -6,42 +6,42 @@ import java.util.List;
 import java.util.Locale;
 
 public class ManageEastAsiaCountries {
-    private List<EastAsiaCountries> countries = new ArrayList<>();
+    CountryDB db = new CountryDB();
 
     public boolean addCountry(EastAsiaCountries country) {
+        List<EastAsiaCountries> countries = db.getAllCountries();
         for(EastAsiaCountries c : countries) {
             if(c.getCountryCode().equals(country.getCountryCode())) {
                 return false;
             }
         }
-        countries.add(country);
+        db.insertCountry(country);
         return true;
 
     }
 
     public void displayCountry(List<EastAsiaCountries> countries) {
+        if(countries == null) {
+            System.out.println("No data found");
+            return;
+        }
         System.out.printf("%-5s | %-15s | %-12s | %-10s%n", "ID", "Name", "Total Area", "Terrain");
         for(EastAsiaCountries c : countries) {
             System.out.printf("%-5s | %-15s | %-12s | %-10s%n", c.getCountryCode(), c.getCountryName(), c.getTotalArea(), c.getCountryTerrain());
         }
     }
 
-    public List<EastAsiaCountries> getCountryList() {
-        return countries;
-    }
 
     public void searchCountry(String name) {
-        for(EastAsiaCountries c : countries) {
-            if(c.getCountryName().toLowerCase().contains(name.toLowerCase())) {
-                System.out.printf("%-5s | %-15s | %-12s | %-10s%n", "ID", "Name", "Total Area", "Terrain");
-                System.out.printf("%-5s | %-15s | %-12s | %-10s%n", c.getCountryCode(), c.getCountryName(), c.getTotalArea(), c.getCountryTerrain());
-                return;
-            }
-        }
-        System.out.println("Not found");
+        displayCountry(db.getCountryByName(name));
+    }
+
+    public List<EastAsiaCountries> getCountryList() {
+        return db.getAllCountries();
     }
 
     public void sortByName() {
+        List<EastAsiaCountries> countries = db.getAllCountries();
         Collections.sort(countries);
         displayCountry(countries);
     }

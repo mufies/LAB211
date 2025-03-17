@@ -12,13 +12,13 @@ import java.util.Date;
 
 public class TestTuan5 {
     public static void main(String[] args) throws ParseException {
-        InputData input = new InputData();
-        System.out.println("Input 2 num");
-        String a = input.getStringNumber();
-        String b = input.getStringNumber();
-        LargeNum largeNum = new LargeNum();
-        largeNum.add(a, b);
-        System.out.println(largeNum.getRes());
+//        InputData input = new InputData();
+//        System.out.println("Input 2 num");
+//        String a = input.getStringNumber();
+//        String b = input.getStringNumber();
+//        LargeNum largeNum = new LargeNum();
+//        largeNum.add(a, b);
+//        System.out.println(largeNum.getRes());
 //        largeNum.Multiply(a, b);
 //        System.out.println(largeNum.getRes());
 
